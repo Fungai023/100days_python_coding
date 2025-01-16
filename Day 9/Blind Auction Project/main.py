@@ -2,6 +2,8 @@
 # TODO-2: Save data into dictionary {name: price}
 # TODO-3: Whether if new bids need to be added
 # TODO-4: Compare bids in dictionary
+import art
+
 
 def user_information(bidders):
 
@@ -17,6 +19,7 @@ def winner(my_dict):
 
 
 my_bidders = {}
+print(art.logo)
 more_people = user_information(my_bidders)
 
 while more_people.lower() != "yes":
