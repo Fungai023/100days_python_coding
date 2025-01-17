@@ -1,37 +1,40 @@
-# TODO-1: Ask the user for input
-# TODO-2: Save data into dictionary {name: price}
-# TODO-3: Whether if new bids need to be added
-# TODO-4: Compare bids in dictionary
 import art
 
 
+# TODO-1: Ask the user for input
+# TODO-2: Save data into dictionary {name: price}
+# TODO-3: Whether if new bids need to be added
 def user_information(bidders):
 
     name = input("What is your name ? : \n ")
-    amount = input("Bid amount in ZAR : \n ")
+    amount = int(input("Bid amount in ZAR : \n "))
     bidders[name] = amount
-    return input("Are you the last person ? : ")
+
+def is_last_person():
+    is_last = input("Are you the last person ?(yes/no) : ")
+    while is_last.lower() not in ["yes", "no"]:
+        print(f'{is_last} is not valid . Please enter valid input.')
+        is_last = input("Are you the last person ? : ")
+    return is_last
 
 
+# TODO-4: Compare bids in dictionary
 def winner(my_dict):
     return max(my_dict.values())
 
+def main():
+    my_bidders = {}
+    print(art.logo)
+    user_information(my_bidders)
+    more_people = (is_last_person())
+    while more_people.lower() != "yes":
+        print("\n"*990)
+        user_information(my_bidders)
+        more_people = is_last_person()
+    else:
+        win = winner(my_bidders)
+        print(f'The highest bidder is {[x for x,y in my_bidders.items() if y == win][0]} : R {win}')
 
-
-my_bidders = {}
-print(art.logo)
-more_people = user_information(my_bidders)
-
-while more_people.lower() != "yes":
-    print("\n"*100)
-    more_people = user_information(my_bidders)
-else:
-    print("The highest bidder is : R" + winner(
-        my_bidders
-    ))
-
-
-
-
-
+if __name__ == "__main__":
+    main()
 
