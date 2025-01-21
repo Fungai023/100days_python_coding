@@ -16,13 +16,19 @@ def print_report(updated_resources):
         print(item + " :  " + updated_resources[item])
     print("Amount :  $" + str(amount))
 
+
 def check_resources(updated_resources, choice):
+    result = True
     coffee_type = data.MENU.get(choice)
     for item in coffee_type.values():
         for i in updated_resources.values():
             if item == i and coffee_type[item]> updated_resources[i]:
+                result = False
                 insufficient = f'  {item}'
-    print(f"Sorry there is not enough {insufficient}")
+    if not result :
+         print(f"Sorry there is not enough {insufficient}")
+    else:
+        return result
 
 
 def process_coins():
