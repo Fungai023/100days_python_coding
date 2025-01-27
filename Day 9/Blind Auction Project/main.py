@@ -1,9 +1,9 @@
 import art
-import sys
 
 # TODO-1: Ask the user for input
 # TODO-2: Save data into dictionary {name: price}
 # TODO-3: Whether if new bids need to be added
+
 def user_information(bidders):
     name = username()
     amount = bid_amount()

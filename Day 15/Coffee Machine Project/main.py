@@ -1,61 +1,32 @@
-import Coffee_Machine_Data as data
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
 
-amount = 0
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+}
 
-def user_order() :
-     choice = input("What would like? (espresso/latte/cappuccino) : ")
-     order_complete = False
-     prompts = ['espresso','latte' , 'cappuccino','off','report']
-     while not choice.isalpha() or order_complete:
-         choice = input("What would like? (espresso/latte/cappuccino) : ")
-     if choice.lower() == "off" :
-         print("Program should end")
-
-def print_report(updated_resources):
-    for item in updated_resources:
-        print(item + " :  " + updated_resources[item])
-    print("Amount :  $" + str(amount))
-
-
-def check_resources(updated_resources, choice):
-    result = True
-    coffee_type = data.MENU.get(choice)
-    for item in coffee_type.values():
-        for i in updated_resources.values():
-            if item == i and coffee_type[item]> updated_resources[i]:
-                result = False
-                insufficient = f'  {item}'
-    if not result :
-         print(f"Sorry there is not enough {insufficient}")
-    else:
-        return result
-
-
-def process_coins():
-    return ""
-
-def check_transaction_successful():
-    return ""
-
-def make_coffee(choice, cost):
-    global amount
-    updated_ingredients = data.resources.copy()
-    menu = data.MENU
-    for coffee_type in menu.items():
-        if choice == coffee_type:
-            reducing_ingredients(coffee_type , updated_ingredients)
-            amount += cost
-
-
-def reducing_ingredients(coffee_type, resources):
-    for item in coffee_type.values():
-        for i in resources.values():
-            if item == i :
-                result = i - item
-                resources[i] = result
-    return resources
-
-
-
-# if __name__ = "__main__":
-#     main()
