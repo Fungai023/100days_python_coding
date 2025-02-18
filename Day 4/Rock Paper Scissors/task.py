@@ -45,3 +45,4 @@ elif (user_input ==1  and computer==0) or (user_input ==2 and computer ==1) :
 elif 0 < user_input >= 3 :
     print("Invalid input , you loose . Pls try again")
 
+
